@@ -4,13 +4,13 @@ import Image from "next/image";
 import { data } from "@/app/data/cardData"; 
 
 const Dynamic = ({ params }: { params: { slug: string } }) => {
-  // interface Idata {
-  //   id: number;
-  //   title: string;
-  //   price: string;
-  //   image: string;  
-  //   slug: string;
-  // }
+  interface Idata {
+    id: number;
+    title: string;
+    price: string;
+    image: string;  
+    slug: string;
+  }
 
   
   const dataa = data.find((b) => 
