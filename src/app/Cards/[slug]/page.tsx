@@ -1,12 +1,16 @@
-
+"use client";
 import React from "react";
 import Image from "next/image";
 import { data } from "@/app/data/cardData";
-import type { GetStaticPropsContext } from "next";
 
-const Dynamic = ({ params }: GetStaticPropsContext) => {
-  // Explicitly cast params to ensure it's treated correctly
-  const { slug } = params as { slug: string };
+interface DynamicProps {
+  params: {
+    slug: string;
+  };
+}
+
+const Dynamic = ({ params }: DynamicProps) => {
+  const { slug } = params;
 
   // Find the product by slug
   const dataa = data.find((b) => b.slug === slug);
@@ -57,4 +61,3 @@ const Dynamic = ({ params }: GetStaticPropsContext) => {
 };
 
 export default Dynamic;
-
