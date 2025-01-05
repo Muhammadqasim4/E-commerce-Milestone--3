@@ -3,19 +3,14 @@ import React from "react";
 import Image from "next/image";
 import { data } from "@/app/data/cardData";
 
-interface DynamicProps {
-  params: {
-    slug: string;
-  };
-}
-
-const Dynamic = ({ params }: DynamicProps) => {
+// ✅ Typing for params fixed directly in the component props
+export default function Dynamic({ params }: { params: { slug: string } }) {
   const { slug } = params;
 
   // Find the product by slug
   const dataa = data.find((b) => b.slug === slug);
 
-  // Handle product not found scenario
+  // If product not found
   if (!dataa) {
     return (
       <div className="max-w-4xl mx-auto mt-[40px] px-4 sm:px-6 lg:px-8 py-2">
@@ -29,7 +24,7 @@ const Dynamic = ({ params }: DynamicProps) => {
     );
   }
 
-  // Render product details if found
+  // Render the product details
   return (
     <div className="max-w-4xl mx-auto mt-[40px] px-4 sm:px-6 lg:px-8 py-[60px]">
       <h1 className="text-3xl sm:text-4xl md:text-5xl text-[rgb(255,0,0)] text-center py-3 px-3 font-bold underline mb-7">
@@ -58,6 +53,4 @@ const Dynamic = ({ params }: DynamicProps) => {
       </div>
     </div>
   );
-};
-
-export default Dynamic;
+}
